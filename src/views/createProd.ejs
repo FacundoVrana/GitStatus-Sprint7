@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--Head-->
+<%- include('partials/head') %>
+    <!--Header-->
+<body>
+
+    <%- include('partials/header') %>
+      <!--Main-->
+
+      <main>
+        <article class="form-container">
+            <form method="POST" action="/products/store" enctype="multipart/form-data" class="register-form">
+                <div>
+                    <div class="titulo-create">CREAR PRODUCTO</div>    
+                    <div class="form-control">
+                        <input type="text" name="name" id="name" placeholder="Nombre Producto:" required="" class="control" value="<%= locals.oldData ? oldData.name : null %>">
+                        <span class="Feedback"></span>
+                        <% if(locals.errors && errors.name) { %>
+                            <div class="text-danger">
+                              <%= errors.name.msg %> 
+                            </div>
+                          <% } %>
+                    </div>
+                    <div class="form-control">
+                        <input type="text" name="brand" id="brand" placeholder="Nombre de Marca:" required="" class="control" value="<%= locals.oldData ? oldData.brand : null %>">
+                        <span class="Feedback"></span>
+                        <% if(locals.errors && errors.brand) { %>
+                            <div class="text-danger">
+                              <%= errors.brand.msg %> 
+                            </div>
+                          <% } %>
+                    </div>
+                    <div class="form-control">
+                        <input type="text" name="description" id="description" placeholder="Descripcion del Producto:" required="" class="control" value="<%= locals.oldData ? oldData.description : null %>">
+                        <span class="Feedback"></span>
+                        <% if(locals.errors && errors.description) { %>
+                            <div class="text-danger">
+                              <%= errors.description.msg %> 
+                            </div>
+                          <% } %>
+                    </div>
+                    <div class="form-control">
+                        <label>Categoría Relevante:</label>
+                        <div class="interests">
+                            <div class="interest-option">
+                                <input type="checkbox" name="interests" value="Videojuegos" id="Videojuegos">
+                                <label for="home">Anime</label>
+                            </div>
+                            <div class="interest-option">
+                                <input type="checkbox" name="interests" value="Anime" id="Anime">
+                                <label for="toys">Videojuegos</label>
+                            </div>
+                            <div class="interest-option">
+                                <input type="checkbox" name="interests" value="Cine" id="Cine">
+                                <label for="healthy">Cine</label>
+                            </div>
+                        </div>
+                        <% if(locals.errors && errors.interests) { %>
+                            <div class="text-danger">
+                              <%= errors.interests.msg %> 
+                            </div>
+                          <% } %>
+                    </div>
+                    <div class="form-control">
+                        <label>Imagen de Producto:</label>
+                        <div class="img">
+                            <img src=" ">
+                        </div>
+                        <input type="file" id="image" name="image" accept="image/png, image/jpeg" class="form-control-btn">
+                        <% if(locals.errors && errors.image) { %>
+                            <div class="text-danger">
+                              <%= errors.image.msg %> 
+                            </div>
+                          <% } %>
+                    </div>
+                    <div class="form-control">
+                        <input type="text" name="price" id="price" placeholder="Precio:" class="control" required="">
+                    </div>
+                    <div class="form-control">
+                        <input type="text" name="discount" id="discount" placeholder="Descuento:" class="control" required="">
+                    </div>
+                    <div class="form-control buttons">
+                        <input type="submit" value="Crear" class="submit-button-form">
+                        <input type="reset" value="Borrar" class="button-form">
+                    </div>
+
+                </div>
+            </form>
+        </article>
+    </main>
+
+        <!--FOOTER-->
+
+        <%- include('partials/footer') %>
+    
+</body>
+</html>

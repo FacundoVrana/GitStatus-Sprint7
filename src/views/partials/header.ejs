@@ -1,0 +1,91 @@
+<header>
+
+    <!--LOGO-->
+    <div class="top-header">
+
+        <img src="/images/logo.png" width="20%" class="logo" href="./">
+
+    </div>
+    <!--LOGO-->
+    <nav>
+        <nav class="categorias" alt="Categorias">
+            <ul>
+
+                <li id="categ">
+
+                    <div class="subnav">
+                        <button class="subnavbtn">Categorías <i class="fa fa-caret-down"></i></button>
+                        <div class="subnav-content">
+                            <a href="#">Anime</a>
+                            <a href="#">Videojuegos</a>
+                            <a href="#">Cine</a>
+                            <a href="#">Cómics</a>
+                            <a href="#">Shows</a>
+
+                        </div>
+                    </div>
+
+
+                </li>
+                <li>
+                    <a href="/#">
+                        <i class="fas fa-home"></i>
+                        <tag>Inicio</tag>
+                    </a>
+                </li>
+
+                <% if (locals.isLogged) { %>
+                    <li><a href="/profile">Hola <%= locals.userLogged.first_name %>!</a></li><br>
+                    <img src="/images/avatars/<%= locals.userLogged.avatar %>" alt="Imagen de usuario" width="30px" height="30px">
+                    <li>
+
+                        <a href="/products/create">
+                           <i class="fas fa-plus-circle"></i>
+                            <tag>Crear</tag>
+                        </a>
+    
+                    </li>
+                    <br>
+                    <li>
+
+                        <a href="product/cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            <tag>Carrito</tag>
+                        </a>
+    
+                    </li>               
+                 <% } else { %>
+                <li>
+                    <a href="login">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <tag>Ingresá</tag>
+                    </a>
+                </li>
+                <li>
+                    <a href="register">
+                        <i class="fas fa-user-plus"></i>
+                        <tag>Registrate</tag>
+                    </a>
+                </li>
+                <% } %>
+
+
+                <div class="search-container">
+                    <form action="/action_page.php">
+                        <input type="text" placeholder="Buscar..." name="search">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+
+
+
+
+
+
+
+                <!--íconos del nav-bar-->
+
+
+            </ul>
+        </nav>
+</header>

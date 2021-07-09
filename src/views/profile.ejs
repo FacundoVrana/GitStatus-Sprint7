@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <%- include('partials/head') %>
+
+<body>
+        <%- include('partials/header') %>
+<main>
+    <div class="title">
+        <h1>Perfil de Usuario</h1>
+        <div class="logout">
+            <form action="/logout" method="GET">
+                <button class="btn">Cerrar Sesion</button>
+            </form>
+        </div> 
+    </div>
+    <section>
+        <div class="center-conteiner">
+            <form class="form" action="/profile?_method=PUT" method="POST" enctype="multipart/form-data">
+                <div class="image">
+                    <img class="picture" src="/images/avatars/<%= user.avatar %>" alt="Imagen de perfil">
+                    <br>
+                    <!-- <label for="avatarN">Cambiar mi foto de perfil</label> -->
+                    <!-- //<input type="file" name="avatarN" id="avatarN" value=""> -->
+                    <!-- <input type="file" name="avatarN" id="avatarN"> -->
+                    <div>
+                        <h3>Hola <%= user.first_name %> <%= user.last_name %> </h3>
+                        <h4><%= user.email %> </h4>
+                    </div>                                        
+                </div>
+
+                <div class="data">
+                    <input type="text" name="first_name" id="firt_name" placeholder="Nombre:" required="" class="control" value="<%= locals.oldData ? oldData.first_name : null %>">
+                    <span class="Feedback"></span>
+                    <% if(locals.errors && errors.first_name) { %>
+                        <div class="text-danger">
+                          <%= errors.first_name.msg %> 
+                        </div>
+                      <% } %>
+                </div>
+                <input type="text" name="last_name" id="last_name" placeholder="Apellido:" required="" class="control" value="<%= locals.oldData ? oldData.last_name : null %>">
+                <span class="Feedback"></span>
+                <% if(locals.errors && errors.last_name) { %>
+                    <div class="text-danger">
+                      <%= errors.last_name.msg %> 
+                    </div>
+                  <% } %>
+                 
+                    <input class="form-data" type="email" name="email"    id="email"      value="<%=user.email%>"     >
+                    <% if(locals.errors && errors.email) { %>
+                        <div class="text-danger">
+                          <%= errors.email.msg %> 
+                        </div>
+                      <% } %>
+                    <br>
+
+     
+                    <br>
+                    <input class="btn" type="submit" value="Modificar">                    
+                </div>
+            </form>            
+
+
+        </div>
+
+    </section>
+</main>
+
+<%- include('partials/footer') %>
+   
+</body>
+
+</html>

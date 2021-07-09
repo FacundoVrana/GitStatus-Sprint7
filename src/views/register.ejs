@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <%- include('partials/head') %>
+
+<body>
+
+    <%- include('partials/header') %>
+  
+
+    <main>
+
+
+    <main>
+        <article class="form-container">
+            <form method="POST" action="/register" class="register-form" enctype="multipart/form-data">
+                <div>
+                    <div class="titulo-register">REGISTRATE</div>
+                    <div class="ya-tenes"><a href=login> Si ya tienes cuenta ingresa ahora</a></div>
+                    <div class="form-control">
+                        <input type="text" name="first_name" id="firt_name" placeholder="Nombre:" required="" class="control" value="<%= locals.oldData ? oldData.first_name : null %>">
+                        <span class="Feedback"></span>
+                        <% if(locals.errors && errors.first_name) { %>
+                            <div class="text-danger">
+                              <%= errors.first_name.msg %> 
+                            </div>
+                          <% } %>
+                    </div>
+                    <input type="text" name="last_name" id="last_name" placeholder="Apellido:" required="" class="control" value="<%= locals.oldData ? oldData.last_name : null %>">
+                    <span class="Feedback"></span>
+                    <% if(locals.errors && errors.last_name) { %>
+                        <div class="text-danger">
+                          <%= errors.last_name.msg %> 
+                        </div>
+                      <% } %>
+                </div>
+                    <div class="form-control">
+                        <input type="text" name="email" id="email" placeholder="Correo electrónico:" required="" class="control" value="<%= locals.oldData ? oldData.email : null %>">
+                        <span class="Feedback"></span>
+                        <% if(locals.errors && errors.email) { %>
+                            <div class="text-danger">
+                              <%= errors.email.msg %> 
+                            </div>
+                          <% } %>
+                    </div>
+                    <div class="form-control">
+                        <label for="dateBrith">Fecha de Nacimiento:</label>
+                        <input type="date" name="dateBrith" id="dateBrith" class="control">
+                    </div>
+                    <div class="form-control">
+                        <input type="text" name="adress" id="adress" placeholder="Domicilio:" class="control">
+                    </div>
+                    <div class="form-control">
+                        <label>Categorías de Interés:</label>
+
+                        <div class="interests">
+                            <div class="interest-option">
+                                <input type="checkbox" name="interests" value="Videojuegos" id="Videojuegos">
+                                <label for="home">Anime</label>
+                            </div>
+                            <div class="interest-option">
+                                <input type="checkbox" name="interests" value="Anime" id="Anime">
+                                <label for="toys">Videojuegos</label>
+                            </div>
+                            <div class="interest-option">
+                                <input type="checkbox" name="interests" value="Cine" id="Cine">
+                                <label for="healthy">Cine</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-control">
+                        <label>Imagen de perfil:</label>
+                        <div class="img">
+                            <img src=" ">
+                        </div>
+                        <input type="file" id="avatar" name="avatar"  class="form-control-btn">
+                        <% if(locals.errors && errors.avatar) { %>
+                            <div class="text-danger">
+                              <%= errors.avatar.msg %> 
+                            </div>
+                          <% } %>
+                    </div>
+                    <div class="form-control">
+                        <input type="password" name="password" id="password" placeholder="Contraseña:" class="control" required="">
+                        <% if(locals.errors && errors.password) { %>
+                            <div class="text-danger">
+                              <%= errors.password.msg %> 
+                            </div>
+                          <% } %>
+                    </div>
+                    <div class="form-control">
+                        <input type="password" name="confirmpass" id="confirmpass" placeholder="Confirmar contraseña:" class="control" required="">
+                        <% if(locals.errors && errors.confirmpass) { %>
+                            <div class="text-danger">
+                              <%= errors.confirmpass.msg %> 
+                            </div>
+                          <% } %>
+                    </div>
+                    <div class="form-control buttons">
+                        <input type="submit" value="Enviar" class="submit-button-form">
+                        <input type="reset" value="Limpiar" class="button-form">
+                    </div>
+
+                </div>
+            </form>
+        </article>
+    </main>
+
+    <%- include('partials/footer') %>
+
+
+<script src="validacionesFront.js"></script>
+</body>
+
+</html>

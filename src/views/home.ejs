@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <%- include('partials/head') %>
+
+<body>
+
+    <%- include('partials/header') %>
+  
+
+    <main>
+
+
+
+
+        <!--Sección de Productos-->
+        <section class="banner">
+            <img class="banner-bg" src="/images/props.jpg" alt="props">
+            <div class="overlay"></div>
+            <div class="banner-container">
+                <div class="banner-data">
+                    <p class="banner-subtitle">Comprá online</p>
+                    <h2 class="banner-title">Lo mejor para tu colección</h2>
+                    <p class="Banner-description"></p>
+                    <a href="#" class="banner-button">Ver Más</a>
+                </div>
+            </div>
+
+</section>
+
+        <section class=" contenido ">
+            <% products.forEach(product => { %>
+                <%- include('partials/product', { product }) %>
+            <% })%>
+        </section>
+        <section class="contenido2 ">
+            <% products.forEach(product => { %>
+                <%- include('partials/product', { product }) %>
+            <% })%>
+            </a>
+        </section>
+      
+        <h2>Te puede interesar</h2>
+        <section class="contenido3 ">
+            <% products.forEach(product => { %>
+                <%- include('partials/product', { product }) %>
+                    <% })%>
+        </section>
+
+        <section class="contenido3 ">
+            <% products.forEach(product => { %>
+                <%- include('partials/product', { product }) %>
+            <% })%>
+        </section>
+        <section>
+            <div class="container-counter">
+                <img class="counter-bg" src="/images/collection.jpg" alt="props">
+                <div class="overlay-counter"></div>
+                <div class="content-counter">
+                    <div class="icon-counter">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <div class="counter" data-target="100000">0</div>
+                    <h3>Suscriptores</h3>
+                </div>
+
+                <div class="content-counter">
+                    <div class="icon-counter">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="counter" data-target="47000">0</div>
+                    <h3>Seguidores</h3>
+                </div>
+
+                <div class="content-counter">
+                    <div class="icon-counter">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    <div class="counter" data-target="15000">0</div>
+                    <h3>Likes</h3>
+                </div>
+
+                <div class="content-counter">
+                    <div class="icon-counter">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="counter" data-target="7000">0</div>
+                    <h3>Clientes</h3>
+                </div>
+            </div>
+            <script>
+                const counters = document.querySelectorAll('.counter');
+                const speed = 200;
+
+                counters.forEach(counter => {
+                    const updCount = () => {
+                        const target = counter.getAttribute('data-target');
+                        const count = +counter.innerText;
+
+                        const score = target / speed;
+
+                        if (count < target) {
+                            counter.innerText = count + score;
+                            setTimeout(updCount, 1);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updCount();
+                });
+            </script>
+        </section>
+
+    </main>
+
+    <!--FOOTER-->
+
+    <%- include('partials/footer') %>
+
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+<a href="/products/<%= product.id %>">
+    <article class="items ">
+        <% product.images.forEach( image => { %>
+        <img src="./images/<%= image.name %> " width="100% " class="product_img ">
+        <% }) %>
+        <div>
+            <div>
+                <div class="text-block">
+                    <h4><%= product.discount %>% OFF</h4>
+                </div>
+                <p class="precio ">$<%= product.price %></p>
+                <p><%= product.name %></p>
+            </div>
+
+    </article>
+</a>
